@@ -206,7 +206,7 @@ class handler(BaseHTTPRequestHandler):
                 self.wfile.write(json.dumps({'lrclist': '', 'status': 404}).encode())
 
         else:
-            self.wfile.write(json.dumps({'data': '', 'status': 400}).encode())
+            self.wfile.write(json.dumps({'data': self.path, 'status': 400}).encode())
         return
 
 
