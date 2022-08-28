@@ -148,7 +148,7 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         print(self.path)
 
-        if "/getMusicMain" in self.path:
+        if "api=getMusicMain" in self.path:
             key = ''
             pn = 1
             rn = 30
@@ -176,7 +176,7 @@ class handler(BaseHTTPRequestHandler):
                 self.wfile.write(json.dumps({"data": content, 'status': 404}).encode())
 
 
-        elif "/getMusicUrl" in self.path:
+        elif "api=getMusicUrl" in self.path:
             rid = ''
 
             items = [i for i in self.path.split('?')[1].split("&")]
@@ -191,7 +191,7 @@ class handler(BaseHTTPRequestHandler):
                 self.wfile.write(json.dumps({'url': '', 'status': 404}).encode())
 
 
-        elif "/getMusicMainLrc" in self.path:
+        elif "api=getMusicMainLrc" in self.path:
             musicId = ''
 
             items = [i for i in self.path.split('?')[1].split("&")]
