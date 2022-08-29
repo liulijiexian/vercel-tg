@@ -2,6 +2,7 @@ import requests
 import copy
 from http.server import BaseHTTPRequestHandler
 import json
+import urllib.parse
 
 
 ''' 公共请求头  '''
@@ -156,7 +157,7 @@ class handler(BaseHTTPRequestHandler):
             items = [i for i in self.path.split('?')[1].split("&")]
             for i in items:
                 if 'key' in i:
-                    key = i.split("=")[1]
+                    key = urllib.parse.unquote(i.split("=")[1])
 
                 if 'pn' in i:
                     pn = int(i.split("=")[1])
