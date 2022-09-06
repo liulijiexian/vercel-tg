@@ -142,7 +142,15 @@ class Controller:
 
 class handler(BaseHTTPRequestHandler):
     controller = Controller()
-
+    
+    def _send_cors_headers(self):
+        """ Sets headers required for CORS """
+        self.send_header('Content-type', 'application/json')
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "*")
+        self.send_header("Access-Control-Allow-Headers", "Authorization, Content-Type")  # 解决跨域核心代码
+    
+    
     def do_GET(self):
         self.send_response(200)
         self.send_header('Content-type','application/json')
